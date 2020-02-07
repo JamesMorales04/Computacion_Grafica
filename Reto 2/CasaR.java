@@ -22,101 +22,100 @@ public class CasaR extends JPanel {
         CasaR clipping = new CasaR();
 
         int[] linea1 = { 105, 105, 190, 190 };
-        int[] linea2 = { 50, 130, 300, 130 };
+        int[] linea2 = { 50, 130, 300, 300 };
 
         clipping.algoritmo_clipping(linea1, g2d);
         clipping.algoritmo_clipping(linea2, g2d);
 
     }
 
-    public void algoritmo_clipping(int[] linea,Graphics2D g2d){
-        float t1,t2,temp;
-        float[] p = new float[4];
-        float[] q= new float[4];
-        int xx1,xx2,yy1,yy2,dx,dy;
+    int maximo(int arr[], int n) {
+        int m = 0;
+        for (int i = 0; i < n; ++i)
+            if (m < arr[i])
+                m = arr[i];
+        return m;
+    }
 
-        dx=linea[2]-linea[0];
-        dy=linea[3]-linea[1];
+    int minimo(int arr[], int n) {
+        int m = 1;
+        for (int i = 0; i < n; ++i)
+            if (m > arr[i])
+                m = arr[i];
+        return m;
+    }
 
-        p[0]=-dx;
-        p[1]=dx;
-        p[2]=-dy;
-        p[3]=dy;
-
-        q[0]=linea[0]-x_min;
-        q[1]=x_max-linea[0];
-        q[2]=linea[1]-y_min;
-        q[3]=y_max-linea[1];
-
-        for(int i=0;i<4;i++)
-        {
-            if(p[i]==0)
-            {
-                if(q[i]>=0)
-                {
-                    if(i<2)
-                    {
-                        if(linea[1]<y_min)
-                        {
-                            linea[1]=y_min;
-                        }
-                    
-                        if(linea[3]>y_max)
-                        {
-                            linea[3]=y_max;
-                        }
-                        g2d.setColor(Color.red);
-                        g2d.drawLine(linea[0],linea[1],linea[2],linea[3]);
-                        g2d.setColor(Color.blue);
-                    }
-                    
-                    if(i>1)
-                    {
-                        if(linea[0]<x_min)
-                        {
-                            linea[0]=x_min;
-                        }
-                        
-                        if(linea[3]>x_max)
-                        {
-                            linea[3]=x_max;
-                        }
-                        g2d.setColor(Color.red);
-                        g2d.drawLine(linea[0],linea[1],linea[2],linea[3]);
-                        g2d.setColor(Color.blue);
-                    }
-                }
-            }
-        }
+    void algoritmo_clipping(int[] Linea, Graphics2D g2d) {
         
-        t1=0;
-        t2=1;
+        int[] p=new int[4];
+
+        p[0] = -(Linea[2] - Linea[0]);
+        p[1]= -p[0];
+        p[2]= -(Linea[3] - Linea[1]);
+        p[3]= -p[2];
+
+        int[] q=new int[4];
+
+        q[0] = Linea[0] - x_min;
+        q[1]= x_max - Linea[0];
+        q[2]= Linea[1] - y_min;
+        q[3]= y_max - Linea[1];
+
+        int[] posarr= new int[5];
+        int[] negarr= new int[5];
+        int posind = 1, negind = 1;
+
+        posarr[0] = 1;
+        negarr[0] = 0;
+
+        if (p[0] != 0) {
+            int r1 = q[0] / p[0];
+            int r2 = q[1] / p[1];
+            if (p[0] < 0) {
+            negarr[negind++] = r1; // for negative p[0], add it to negative array
+            posarr[posind++] = r2; // and add p[1] to positive array
+            } else {
+            negarr[negind++] = r2;
+            posarr[posind++] = r1;
+            }
+        }
+        if (p[2] != 0) {
+            int r3 = q[2] / p[2];
+            int r4 = q[3] / p[3];
+            if (p[2] < 0) {
+            negarr[negind++] = r3;
+            posarr[posind++] = r4;
+            } else {
+            negarr[negind++] = r4;
+            posarr[posind++] = r3;
+            }
+        }
+
+        int xn1, yn1, xn2, yn2;
+        int rn1, rn2;
+        rn1 = maximo(negarr, negind); // maximum of negative array
+        rn2 = minimo(posarr, posind); // minimum of positive array
+
+       
+        xn1 = Linea[0] + p[1] * rn1;
+        yn1 = Linea[1] + p[3] * rn1;
+
+        xn2 = Linea[0] + p[1] * rn2;
+        yn2 = Linea[1] + p[3] * rn2;
+
+        System.out.println(xn1);
         
-        for(int i=0;i<4;i++)
-        {
-            temp=q[i]/p[i];
-            
-            if(p[i]<0)
-            {
-                if(t1<=temp)
-                    t1=temp;
-            }
-            else
-            {
-                if(t2>temp)
-                    t2=temp;
-            }
-        }
-	
-        if(t1<t2)
-        {
-            xx1 = linea[0] + (int)t1 * (int) p[1];
-            xx2 = linea[0] + (int)t2 * (int)p[1];
-            yy1 = linea[1] + (int)t1 * (int)p[3];
-            yy2 = linea[1] + (int)t2 * (int)p[3];
-            g2d.setColor(Color.blue);
-            g2d.drawLine(xx1,yy1,xx2,yy2);
-        }
+        g2d.drawLine(xn1, yn1, xn2,yn2); 
+
+        g2d.setColor(Color.blue);
+
+        g2d.drawLine(Linea[0],  Linea[1], xn1, yn1);
+
+        g2d.setColor(Color.red);
+
+        g2d.drawLine(Linea[2],  Linea[3], xn2, yn2);
+        
+        
     }
 
     public static void main(String[] args) {
