@@ -4,14 +4,17 @@ import java.awt.Graphics2D;
 
 import javax.swing.JPanel;
 import javax.swing.JFrame;
+import java.util.Random; 
 
 public class CasaR extends JPanel {
 
+    static int[][] lineas = new int[100][1];
     int x_max = 200;
     int y_max = 200;
     int x_min = 100;
     int y_min = 100;
 
+    @Override
     public void paintComponent(Graphics g) {
 
         super.paintComponent(g);
@@ -21,80 +24,97 @@ public class CasaR extends JPanel {
 
         CasaR clipping = new CasaR();
 
-        int[] linea1 = { 105, 105, 190, 190 };
-        int[] linea2 = { 50, 130, 300, 300 };
+        //int[] linea1 = { 105, 105, 190, 190 };
+        //int[] linea2 = { 50, 130, 300, 300 };
 
-        clipping.algoritmo_clipping(linea1, g2d);
-        clipping.algoritmo_clipping(linea2, g2d);
+        
+        for (int i = 0; i < 100; i++) {
+            clipping.algoritmo_clipping(lineas[i], g2d);
+        }
+
 
     }
 
-    int maximo(int arr[], int n) {
-        int m = 0;
-        for (int i = 0; i < n; ++i)
-            if (m < arr[i])
+    static int[] generador_lineas(){
+        int[] linea= new int[4];
+        for (int i = 0; i < linea.length; i++) {
+            linea[i]=(int)(Math.random()*300);
+        }
+        return linea;
+    }
+
+    double maximo(double arr[], int n) {
+        double m = 0;
+        for (int i = 0; i < n; ++i){
+
+
+            if (m < arr[i]){
                 m = arr[i];
+            }
+        }
         return m;
     }
 
-    int minimo(int arr[], int n) {
-        int m = 1;
-        for (int i = 0; i < n; ++i)
-            if (m > arr[i])
+    double minimo(double arr[], int n) {
+        double m = 1;
+        for (int i = 0; i < n; ++i){
+            if (m > arr[i]){
                 m = arr[i];
+            }
+        }
         return m;
     }
 
     void algoritmo_clipping(int[] Linea, Graphics2D g2d) {
         
-        int[] p=new int[4];
+        double[] p=new double[4];
 
         p[0] = -(Linea[2] - Linea[0]);
         p[1]= -p[0];
         p[2]= -(Linea[3] - Linea[1]);
         p[3]= -p[2];
 
-        int[] q=new int[4];
+        double[] q=new double[4];
 
         q[0] = Linea[0] - x_min;
         q[1]= x_max - Linea[0];
         q[2]= Linea[1] - y_min;
         q[3]= y_max - Linea[1];
 
-        int[] posarr= new int[5];
-        int[] negarr= new int[5];
+        double[] posarr= new double[5];
+        double[] negarr= new double[5];
         int posind = 1, negind = 1;
 
         posarr[0] = 1;
         negarr[0] = 0;
 
         if (p[0] != 0) {
-            int r1 = q[0] / p[0];
-            int r2 = q[1] / p[1];
+            double r1 = q[0] / p[0];
+            double r2 = q[1] / p[1];
             if (p[0] < 0) {
-            negarr[negind++] = r1; // for negative p[0], add it to negative array
-            posarr[posind++] = r2; // and add p[1] to positive array
+                negarr[negind++] = r1; 
+                posarr[posind++] = r2; 
             } else {
-            negarr[negind++] = r2;
-            posarr[posind++] = r1;
+                negarr[negind++] = r2;
+                posarr[posind++] = r1;
             }
         }
         if (p[2] != 0) {
-            int r3 = q[2] / p[2];
-            int r4 = q[3] / p[3];
+            double r3 = q[2] / p[2];
+            double r4 = q[3] / p[3];
             if (p[2] < 0) {
-            negarr[negind++] = r3;
-            posarr[posind++] = r4;
+                negarr[negind++] = r3;
+                posarr[posind++] = r4;
             } else {
-            negarr[negind++] = r4;
-            posarr[posind++] = r3;
+                negarr[negind++] = r4;
+                posarr[posind++] = r3;
             }
         }
-
-        int xn1, yn1, xn2, yn2;
-        int rn1, rn2;
-        rn1 = maximo(negarr, negind); // maximum of negative array
-        rn2 = minimo(posarr, posind); // minimum of positive array
+        
+        double xn1, yn1, xn2, yn2;
+        double rn1, rn2;
+        rn1 = maximo(negarr, negind); 
+        rn2 = minimo(posarr, posind); 
 
        
         xn1 = Linea[0] + p[1] * rn1;
@@ -103,17 +123,15 @@ public class CasaR extends JPanel {
         xn2 = Linea[0] + p[1] * rn2;
         yn2 = Linea[1] + p[3] * rn2;
 
-        System.out.println(xn1);
-        
-        g2d.drawLine(xn1, yn1, xn2,yn2); 
-
         g2d.setColor(Color.blue);
-
-        g2d.drawLine(Linea[0],  Linea[1], xn1, yn1);
+        
+        g2d.drawLine((int)Math.round(xn1),(int) Math.round(yn1), (int)Math.round(xn2),(int)Math.round(yn2)); 
 
         g2d.setColor(Color.red);
 
-        g2d.drawLine(Linea[2],  Linea[3], xn2, yn2);
+        g2d.drawLine(Linea[0],  Linea[1], (int)Math.round(xn1),(int) Math.round(yn1));
+
+        g2d.drawLine(Linea[2],  Linea[3], (int)Math.round(xn2), (int)Math.round(yn2));
         
         
     }
@@ -125,5 +143,9 @@ public class CasaR extends JPanel {
         frame.setSize(400, 400);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
+
+        for (int i = 0; i < 100; i++) {
+            lineas[i]=generador_lineas();
+        }
     }
 }
