@@ -24,9 +24,6 @@ public class CasaR extends JPanel {
 
         CasaR clipping = new CasaR();
 
-        //int[] linea1 = { 105, 105, 190, 190 };
-        //int[] linea2 = { 50, 130, 300, 300 };
-
         
         for (int i = 0; i < 100; i++) {
             clipping.algoritmo_clipping(lineas[i], g2d);
