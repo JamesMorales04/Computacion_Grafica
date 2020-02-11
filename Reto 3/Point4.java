@@ -1,22 +1,15 @@
 public class Point4{
 
-    public Point4(int x1, int y1, int z1, int w1){
-        x=x1;
-        y=y1;
-        z=z1;
-        w=w1;
-    }
+    int[] punto;
+    double[] punto_d;
 
-    public Point3(Double x1, Double y1,Double z1, Double w1){
-        x_d=x1;
-        y_d=y1;
-        z_d=z1;
-        w_d=w1;
-    }
+    public Point4(int x, int y,int z, int w){
+        punto=new int[]{x,y,z,w};
+    }    
 
-
-    int x,y,z,w;
-    double x_d,y_d,z_d,w_d;
+    public Point4(Double x, Double y,double z, Double w){
+        punto_d=new double[]{x,y,z,w};
+    }    
 
 
 }

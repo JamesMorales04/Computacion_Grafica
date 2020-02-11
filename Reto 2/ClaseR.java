@@ -79,21 +79,18 @@ public class ClaseR extends JPanel {
         int code1 = OutCode(linea[0], linea[1]); 
         int code2 = OutCode(linea[2], linea[3]); 
   
-        // Initialize line as outside the rectangular window 
         boolean aceptado = false; 
   
         while (true) 
         { 
             if ((code1 == 0) && (code2 == 0)) 
             { 
-                // If both endpoints lie within rectangle 
                 aceptado = true; 
                 break; 
             } 
             else if ((code1 & code2)!=0)
             { 
-                // If both endpoints are outside rectangle, 
-                // in same region 
+
                 break; 
             }
             else{
