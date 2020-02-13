@@ -11,6 +11,11 @@ public class EcParSegRect {
         int[] valor = new int[2];
         double m1 = (epsr1.punto2[1] - epsr1.punto1[1])/(epsr1.punto2[0] - epsr1.punto1[0]);
         double m2 = (epsr2.punto2[1] - epsr2.punto1[1])/(epsr2.punto2[0] - epsr2.punto1[0]);
+        if (m1==m2){
+            System.out.println("Las lineas son paralelas");
+            System.exit(0);
+        }
+        
         return valor;
     }
     public static void main(String[] args) {
