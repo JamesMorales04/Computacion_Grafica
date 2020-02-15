@@ -11,14 +11,12 @@ public class EcParSegRect {
         double[] valor = new double[2];
         double m1 = (epsr1.punto2[1] - epsr1.punto1[1])/(epsr1.punto2[0] - epsr1.punto1[0]);
         double m2 = (epsr2.punto2[1] - epsr2.punto1[1])/(epsr2.punto2[0] - epsr2.punto1[0]);
-        System.out.println(m1+" "+m2);
         if (m1==m2){
             System.out.println("Las lineas son paralelas");
             System.exit(0);
         }
         double b1 = (epsr1.punto1[1] - m1*(epsr1.punto1[0]));
         double b2 = (epsr2.punto1[1] - m2*(epsr2.punto1[0]));
-        System.out.println(b1+" "+b2);
         valor [0] = (b2-b1) / (m1-m2);
         valor [1] = (m1) * valor[0] + b1;
         System.out.println(valor[0]+" "+valor[1]);
@@ -26,7 +24,7 @@ public class EcParSegRect {
     }
     public static void main(String[] args) {
         EcParSegRect ecu1 = new EcParSegRect(9.6, 8, 11, 4);
-        EcParSegRect ecu2 = new EcParSegRect(8, 15, -2, 5);
+        EcParSegRect ecu2 = new EcParSegRect(8, 15, -2.3, 5);
         solve(ecu1, ecu2);
     }
 }
