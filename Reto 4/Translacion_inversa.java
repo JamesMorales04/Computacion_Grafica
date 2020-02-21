@@ -1,13 +1,13 @@
 /**
  * Translacion
  */
-public class Translacion {
+public class Translacion_inversa {
 
     Edge puntos;
     int dx;
     int dy;
 
-    public Translacion(int dx, int dy, Edge puntos){
+    public Translacion_inversa(int dx, int dy, Edge puntos){
         this.puntos= puntos;
         this.dx=dx;
         this.dy=dy;
@@ -47,9 +47,9 @@ public class Translacion {
                         break;
                     case 2:
                         if(i==0){
-                            matriz[i][j]=dx;
+                            matriz[i][j]=-dx;
                         }else if(i==1){
-                            matriz[i][j]=dy;
+                            matriz[i][j]=-dy;
                         }
                         else{
                             matriz[i][j]=1;

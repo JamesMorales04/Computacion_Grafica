@@ -51,19 +51,19 @@ public class Matrix3x3 {
         return matriz_resultado;
     }
 
-    public static Point3 times(Double[][] matriz, Point3 punto) {
+    public static Point3 times(double[][] matriz, Point3 punto) {
         double x=0,y=0,w=0;
         for (int i = 0; i < matriz.length; i++) {
             for (int j = 0; j < matriz[i].length; j++) {
                 switch (i) {
                     case 0:
-                        x+=matriz[i][j]*punto.punto[j];
+                        x+=matriz[i][j]*punto.punto_d[j];
                         break;
                     case 1:
-                        y+=matriz[i][j]*punto.punto[j];
+                        y+=matriz[i][j]*punto.punto_d[j];
                         break;
                     case 2:
-                        w+=matriz[i][j]*punto.punto[j];
+                        w+=matriz[i][j]*punto.punto_d[j];
                         break;
 
                 }

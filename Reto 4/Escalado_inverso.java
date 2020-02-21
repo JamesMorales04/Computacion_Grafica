@@ -1,14 +1,12 @@
-
-/**
- * Escalado
- */
-public class Rotacion {
+public class Escalado_inverso {
     Edge puntos;
-    double angulo;
+    double Sx;
+    double Sy;
 
-    public Rotacion(double angulo, Edge punto){
+    public Escalado_inverso(double Sx, double Sy, Edge punto){
         this.puntos= punto;
-        this.angulo=angulo;
+        this.Sx=Sx;
+        this.Sy=Sy;
     }
 
     public void movimiento(){
@@ -30,18 +28,14 @@ public class Rotacion {
                 switch (j) {
                     case 0:
                         if(i==0){
-                            matriz[i][j]=Math.cos(angulo);
-                        }else if(i==1){
-                            matriz[i][j]=Math.sin(angulo);
+                            matriz[i][j]=1/Sx;
                         }else{
-                            matriz[i][j]=0;
+                            matriz[i][j]=0.0;
                         }
                         break;
                     case 1:
-                        if(i==0){
-                            matriz[i][j]=-Math.sin(angulo);
-                        }else if(i==1){
-                            matriz[i][j]=Math.cos(angulo);
+                        if(i==1){
+                            matriz[i][j]=1/Sy;
                         }else{
                             matriz[i][j]=0.0;
                         }
@@ -63,7 +57,7 @@ public class Rotacion {
     }
     
     /*public static void main(String[] args) {
-        Escalado prueba = new Escalado(0.9, 1.1);
+        Escalado_inverso prueba = new Escalado_inverso(0.9, 1.1);
         prueba.movimiento();
         for (int i = 0; i < prueba.puntos.nodos.length; i++) {
             for (int j = 0; j < prueba.puntos.nodos[i].length; j++) {
@@ -75,4 +69,3 @@ public class Rotacion {
 
 }
     
-

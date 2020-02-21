@@ -11,11 +11,17 @@ import javax.swing.JFrame;
  */
 public class Dibujar extends JPanel{
 
-    Translacion mover;
-    Edge punto;
+    static Translacion mover;
+    static Escalado ampliar;
+    static Rotacion rotar;
+    static Edge punto;
+
     public Dibujar(){
         this.punto= new Edge();
+        this.punto.leer_archivo();
         mover= new Translacion(50,25,punto);
+        ampliar= new Escalado(0.9, 1.1, punto);
+        rotar= new Rotacion(90.0,punto);
     }
 
     public void dibujar(Graphics g2d, int[][] nodo, int[][] arista) {
@@ -37,9 +43,8 @@ public class Dibujar extends JPanel{
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
-        dibujar(g2d, mover.puntos.nodos, mover.puntos.aristas);
-        mover.movimiento();
-        dibujar(g2d, mover.puntos.nodos, mover.puntos.aristas);
+        dibujar(g2d, punto.nodos, punto.aristas);
+        repaint();
     }
     public static void main(String[] args) {
         
@@ -49,5 +54,6 @@ public class Dibujar extends JPanel{
         frame.setSize(500, 500);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);   
+        frame.addKeyListener(new Keylistener(mover,ampliar,rotar));
     }
 }

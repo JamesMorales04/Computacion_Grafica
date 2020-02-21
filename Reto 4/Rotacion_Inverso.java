@@ -1,12 +1,11 @@
-
 /**
  * Escalado
  */
-public class Rotacion {
+public class Rotacion_Inverso {
     Edge puntos;
     double angulo;
 
-    public Rotacion(double angulo, Edge punto){
+    public Rotacion_Inverso(double angulo, Edge punto){
         this.puntos= punto;
         this.angulo=angulo;
     }
@@ -32,14 +31,14 @@ public class Rotacion {
                         if(i==0){
                             matriz[i][j]=Math.cos(angulo);
                         }else if(i==1){
-                            matriz[i][j]=Math.sin(angulo);
+                            matriz[i][j]=-Math.sin(angulo);
                         }else{
                             matriz[i][j]=0;
                         }
                         break;
                     case 1:
                         if(i==0){
-                            matriz[i][j]=-Math.sin(angulo);
+                            matriz[i][j]=Math.sin(angulo);
                         }else if(i==1){
                             matriz[i][j]=Math.cos(angulo);
                         }else{
@@ -75,4 +74,3 @@ public class Rotacion {
 
 }
     
-
