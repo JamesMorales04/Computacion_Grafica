@@ -12,9 +12,10 @@ import javax.swing.JFrame;
 public class Dibujar extends JPanel{
 
     Translacion mover;
-
+    Edge punto;
     public Dibujar(){
-        mover= new Translacion();
+        this.punto= new Edge();
+        mover= new Translacion(50,25,punto);
     }
 
     public void dibujar(Graphics g2d, int[][] nodo, int[][] arista) {

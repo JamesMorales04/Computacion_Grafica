@@ -1,0 +1,7 @@
+/**
+ * Escalado
+ */
+public class Escalado {
+
+    
+}

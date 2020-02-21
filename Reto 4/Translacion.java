@@ -4,16 +4,20 @@
 public class Translacion {
 
     Edge puntos;
+    int dx;
+    int dy;
 
-    public Translacion(){
-        this.puntos= new Edge();
+    public Translacion(int dx, int dy, Edge puntos){
+        this.puntos= puntos;
         this.puntos.leer_archivo();
+        this.dx=dx;
+        this.dy=dy;
     }
 
     public void movimiento(){
 
         for (int i = 0; i < puntos.nodos.length; i++) {
-            Point3 nuevo_valor=nueva_posicion(this.puntos.nodos[i][0], this.puntos.nodos[i][1],50,25);
+            Point3 nuevo_valor=nueva_posicion(this.puntos.nodos[i][0], this.puntos.nodos[i][1],dx,dy);
             this.puntos.nodos[i][0]=nuevo_valor.punto[0];
             this.puntos.nodos[i][1]=nuevo_valor.punto[1];
         }
@@ -59,17 +63,6 @@ public class Translacion {
 
         return matriz_translacion.times(matriz, punto);
     }
-    public static void main(String[] args) {
-        Translacion punto= new Translacion();
-        punto.movimiento();
-
-        for (int i = 0; i < punto.puntos.nodos.length; i++) {
-            for (int j = 0; j < punto.puntos.nodos[i].length; j++) {
-                System.out.print(punto.puntos.nodos[i][j]+" ");
-            }
-            System.out.println();
-
-        }
-    }
+    
 
 }
