@@ -8,7 +8,7 @@ public class Rotacion {
 
     public Rotacion(double angulo, Edge punto){
         this.puntos= punto;
-        this.angulo=angulo;
+        this.angulo=Math.toRadians(angulo);
     }
 
     public void movimiento(){
