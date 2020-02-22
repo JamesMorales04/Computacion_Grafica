@@ -26,24 +26,28 @@ class Keylistener implements KeyListener
 		if (c == 'w')
 		{
             mover.dy+=15;
+            mover.dx=1;
             mover.movimiento();
             System.out.println(mover.dy);
 		}
 		if (c == 's')
 		{
-			mover.dy-=15;
+            mover.dy-=15;
+            mover.dx=1;
             mover.movimiento();
             System.out.println(mover.dy);
 		}
 		if (c == 'a')
 		{
-			mover.dx-=15;
+            mover.dx-=15;
+            mover.dy=1;
             mover.movimiento();
             System.out.println(mover.dx);
 		}
 		if (c == 'd')
 		{
-			mover.dx+=15;
+            mover.dx+=15;
+            mover.dy=1;
             mover.movimiento();
             System.out.println(mover.dx);
         }
