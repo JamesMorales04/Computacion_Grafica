@@ -17,8 +17,6 @@ public class Rotacion {
             Point3 nuevo_valor=nueva_posicion((double)this.puntos.nodos[i][0],(double) this.puntos.nodos[i][1]);
             this.puntos.nodos[i][0]=(int)nuevo_valor.punto_d[0];
             this.puntos.nodos[i][1]=(int)nuevo_valor.punto_d[1];
-            System.out.println(this.puntos.nodos[i][0]);
-            System.out.println(this.puntos.nodos[i][1]);
         }
 
     }
