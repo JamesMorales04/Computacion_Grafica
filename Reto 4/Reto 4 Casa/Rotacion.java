@@ -8,15 +8,17 @@ public class Rotacion {
 
     public Rotacion(double angulo, Edge punto){
         this.puntos= punto;
-        this.angulo=Math.toRadians(angulo);
+        this.angulo=angulo;
     }
 
     public void movimiento(){
-        
+        System.out.println(puntos.nodos.length);
         for (int i = 0; i < puntos.nodos.length; i++) {
             Point3 nuevo_valor=nueva_posicion((double)this.puntos.nodos[i][0],(double) this.puntos.nodos[i][1]);
             this.puntos.nodos[i][0]=(int)nuevo_valor.punto_d[0];
             this.puntos.nodos[i][1]=(int)nuevo_valor.punto_d[1];
+            System.out.println(this.puntos.nodos[i][0]);
+            System.out.println(this.puntos.nodos[i][1]);
         }
 
     }
@@ -58,7 +60,6 @@ public class Rotacion {
                 }
             }
         }
-
         return matriz_translacion.times(matriz, punto);
     }
     

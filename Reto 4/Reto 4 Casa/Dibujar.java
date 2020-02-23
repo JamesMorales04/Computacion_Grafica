@@ -21,7 +21,7 @@ public class Dibujar extends JPanel{
         this.punto.leer_archivo();
         mover= new Translacion(50,25,punto);
         ampliar= new Escalado(0.9, 1.1, punto);
-        rotar= new Rotacion(90.0,punto);
+        rotar= new Rotacion(0.0,punto);
     }
 
     public void dibujar(Graphics g2d, int[][] nodo, int[][] arista) {

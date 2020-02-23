@@ -54,13 +54,13 @@ class Keylistener implements KeyListener
         
         if (c == 'i')
 		{
-			rotar.angulo=0.1;
+			rotar.angulo=0.18;
             rotar.movimiento();
             System.out.println(rotar.angulo);
         }
         if (c == 'k')
 		{
-			rotar.angulo=-0.1;
+			rotar.angulo=-0.18;
             rotar.movimiento();
             System.out.println(rotar.angulo);
         }
