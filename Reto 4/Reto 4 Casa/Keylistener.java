@@ -54,17 +54,17 @@ class Keylistener implements KeyListener
         
         if (c == 'i')
 		{
-			rotar.angulo+=10;
+			rotar.angulo=0.1;
             rotar.movimiento();
             System.out.println(rotar.angulo);
         }
         if (c == 'k')
 		{
-			rotar.angulo-=10;
+			rotar.angulo=-0.1;
             rotar.movimiento();
             System.out.println(rotar.angulo);
         }
-        if ( e.getKeyCode() == KeyEvent.VK_UP)
+        if (c == 'o')
 		{
 			ampliar.Sy=1.1;
             ampliar.Sx=1.1;
@@ -72,7 +72,7 @@ class Keylistener implements KeyListener
             System.out.println(ampliar.Sx);
             System.out.println(ampliar.Sy);
         }
-        if ( e.getKeyCode() == KeyEvent.VK_DOWN)
+        if (c == 'l')
 		{
             ampliar.Sy=0.9;
             ampliar.Sx=0.9;

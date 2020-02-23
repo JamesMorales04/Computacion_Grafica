@@ -30,18 +30,18 @@ public class Rotacion {
                 switch (j) {
                     case 0:
                         if(i==0){
-                            matriz[i][j]=Math.cos(angulo);
+                            matriz[i][j]=Math.cos(this.angulo);
                         }else if(i==1){
-                            matriz[i][j]=Math.sin(angulo);
+                            matriz[i][j]=Math.sin(this.angulo);
                         }else{
-                            matriz[i][j]=0;
+                            matriz[i][j]=0.0;
                         }
                         break;
                     case 1:
                         if(i==0){
-                            matriz[i][j]=-Math.sin(angulo);
+                            matriz[i][j]=-Math.sin(this.angulo);
                         }else if(i==1){
-                            matriz[i][j]=Math.cos(angulo);
+                            matriz[i][j]=Math.cos(this.angulo);
                         }else{
                             matriz[i][j]=0.0;
                         }
