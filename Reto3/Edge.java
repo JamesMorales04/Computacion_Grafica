@@ -20,7 +20,7 @@ public class Edge extends JPanel {
         FileReader fr = null;
         BufferedReader br = null;
         try {
-            archivo = new File ("Reto 3/casa.txt");
+            archivo = new File ("reto_3/casa.txt");
 			fr = new FileReader (archivo);
             br = new BufferedReader(fr);
             System.out.println("Leyendo el contendio del archivo.txt");
