@@ -1,7 +1,0 @@
-/**
- * ClaseR
- */
-public class ClaseR {
-
-    
-}

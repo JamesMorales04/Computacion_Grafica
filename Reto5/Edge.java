@@ -4,8 +4,8 @@ import java.io.*;
 
 public class Edge{
 
-    int[][] nodos;
-    int[][] aristas;
+    double[][] nodos;
+    double[][] aristas;
 
     public void leer_archivo(){
         int a=0;
@@ -24,7 +24,7 @@ public class Edge{
                     String[] nodo=linea.split(" ",3);
                     nodos[con][0] =Integer.parseInt(nodo[0]);
                     nodos[con][1] =Integer.parseInt(nodo[1]);
-                    nodos[con][2] =Integer.parseInt(nodo[2]);
+                    nodos[con][2] =Integer.parseInt(""+nodo[2].substring(2,5));
                     con +=1;
                     if(con==a){
                         break;
@@ -32,7 +32,7 @@ public class Edge{
                 }
                 else{
                     a =Integer.parseInt(linea);
-                    nodos = new int[a][3];
+                    nodos = new double[a][3];
                 }
             }
             con=0;
@@ -48,7 +48,7 @@ public class Edge{
                 }
                 else{
                     a =Integer.parseInt(linea);
-                    aristas = new int[a][2];
+                    aristas = new double[a][2];
                 }
             }
         } catch (Exception e) {
@@ -70,9 +70,9 @@ public class Edge{
     public static void main(String[] args) {
         Edge cosa= new Edge();
         cosa.leer_archivo();
-        for (int i = 0; i < cosa.aristas.length; i++) {
-            for (int j = 0; j < cosa.aristas[i].length; j++) {
-                System.out.print(cosa.aristas[i][j]+"  ");
+        for (int i = 0; i < cosa.nodos.length; i++) {
+            for (int j = 0; j < cosa.nodos[i].length; j++) {
+                System.out.print(cosa.nodos[i][j]+"  ");
             }
             System.out.println();
         }

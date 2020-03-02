@@ -18,18 +18,19 @@ public class Dibujar extends JPanel{
         this.punto.leer_archivo();
     }
 
-    public void dibujar(Graphics g2d, int[][] nodo, int[][] arista) {
-        int[][] nodos= nodo;
-        int[][] aristas= arista;
+    public void dibujar(Graphics g2d, double[][] nodo, double[][] arista) {
+        double[][] nodos= nodo;
+        double[][] aristas= arista;
 
         g2d.setColor(Color.black);
         int con = aristas.length;
 
         for (int i = 0; i < con; i++) {
-            int x1 = nodos[aristas[i][0]][0];
-            int y1 = 448 - nodos[aristas[i][0]][1];
-            int x2 = nodos[aristas[i][1]][0];
-            int y2 = 448 - nodos[aristas[i][1]][1];
+            
+            int x1 = (int)nodos[(int)aristas[i][0]][0] ;
+            int y1 = 448 - (int)nodos[(int)aristas[i][0]][1];
+            int x2 = (int)nodos[(int)aristas[i][1]][0];
+            int y2 = 448 - (int)nodos[(int)aristas[i][1]][1];
             g2d.drawLine(x1,y1,x2,y2);
         }
     }
