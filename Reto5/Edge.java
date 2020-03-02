@@ -14,7 +14,7 @@ public class Edge{
         FileReader fr = null;
         BufferedReader br = null;
         try {
-            archivo = new File ("Reto 3/casa.txt");
+            archivo = new File ("Reto5/casa.txt");
 			fr = new FileReader (archivo);
             br = new BufferedReader(fr);
             System.out.println("Leyendo el contendio del archivo.txt");
@@ -31,7 +31,7 @@ public class Edge{
                 }
                 else{
                     a =Integer.parseInt(linea);
-                    nodos = new int[a][2];
+                    nodos = new int[a][3];
                 }
             }
             con=0;
