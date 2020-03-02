@@ -21,9 +21,10 @@ public class Edge{
             String linea;
             while ((linea=br.readLine())!=null) {
                 if (linea.indexOf(" ")!=-1 ) {
-                    String[] nodo=linea.split(" ",2);
+                    String[] nodo=linea.split(" ",3);
                     nodos[con][0] =Integer.parseInt(nodo[0]);
                     nodos[con][1] =Integer.parseInt(nodo[1]);
+                    nodos[con][2] =Integer.parseInt(nodo[2]);
                     con +=1;
                     if(con==a){
                         break;
@@ -66,5 +67,15 @@ public class Edge{
         
     }
     
+    public static void main(String[] args) {
+        Edge cosa= new Edge();
+        cosa.leer_archivo();
+        for (int i = 0; i < cosa.aristas.length; i++) {
+            for (int j = 0; j < cosa.aristas[i].length; j++) {
+                System.out.print(cosa.aristas[i][j]+"  ");
+            }
+            System.out.println();
+        }
+    }
     
 }
