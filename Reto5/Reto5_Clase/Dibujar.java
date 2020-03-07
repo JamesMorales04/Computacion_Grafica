@@ -11,32 +11,31 @@ import javax.swing.JFrame;
  */
 public class Dibujar extends JPanel{
 
-    static Edge punto;
-    static Edge punto2;
-    static Proyeccion mover;
+    Edge punto;
+    Proyeccion proyeccion;
 
 
     public Dibujar(){
         this.punto= new Edge();
         this.punto.leer_archivo();
-        punto2=punto;
-        mover= new Proyeccion(-500,punto);
+        this.proyeccion= new Proyeccion(-500,punto);
+        this.proyeccion.movimiento();
 
     }
 
-    public void dibujar(Graphics g2d, double[][] nodo, double[][] arista) {
+    public void dibujar(Graphics g2d, double[][] nodo, int[][] arista) {
         double[][] nodos= nodo;
-        double[][] aristas= arista;
+        int[][] aristas= arista;
 
         g2d.setColor(Color.black);
         int con = aristas.length;
 
         for (int i = 0; i < con; i++) {
             
-            int x1 = (int)nodos[(int)aristas[i][0]][0] ;
-            int y1 = 448 - (int)nodos[(int)aristas[i][0]][1];
-            int x2 = (int)nodos[(int)aristas[i][1]][0];
-            int y2 = 448 - (int)nodos[(int)aristas[i][1]][1];
+            int x1 = (int)nodos[aristas[i][0]][0] ;
+            int y1 = 448 - (int)nodos[aristas[i][0]][1];
+            int x2 = (int)nodos[aristas[i][1]][0];
+            int y2 = 448 - (int)nodos[aristas[i][1]][1];
             g2d.drawLine(x1,y1,x2,y2);
         }
     }
@@ -44,9 +43,7 @@ public class Dibujar extends JPanel{
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
-        mover.movimiento();
         dibujar(g2d, punto.nodos, punto.aristas);
-        dibujar(g2d, punto2.nodos, punto2.aristas);
         repaint();
         
     }

@@ -14,9 +14,9 @@ public class Proyeccion {
 
         for (int i = 0; i < puntos.nodos.length; i++) {
             Point4 nuevo_valor=nueva_posicion(this.puntos.nodos[i][0], this.puntos.nodos[i][1], this.puntos.nodos[i][2]);
-            this.puntos.nodos[i][0]=nuevo_valor.punto_d[0]/(nuevo_valor.punto_d[2]/d);
-            this.puntos.nodos[i][1]=nuevo_valor.punto_d[1]/(nuevo_valor.punto_d[2]/d);
-            this.puntos.nodos[i][2]=nuevo_valor.punto_d[2]/(nuevo_valor.punto_d[2]/d);
+            this.puntos.nodos[i][0]=nuevo_valor.punto_d[0]/(nuevo_valor.punto_d[2]/this.d);
+            this.puntos.nodos[i][1]=nuevo_valor.punto_d[1]/(nuevo_valor.punto_d[2]/this.d);
+            this.puntos.nodos[i][2]=nuevo_valor.punto_d[2]/(nuevo_valor.punto_d[2]/this.d);
             
         }
 

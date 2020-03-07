@@ -5,7 +5,7 @@ import java.io.*;
 public class Edge{
 
     double[][] nodos;
-    double[][] aristas;
+    int[][] aristas;
 
     public void leer_archivo(){
         int a=0;
@@ -14,7 +14,7 @@ public class Edge{
         FileReader fr = null;
         BufferedReader br = null;
         try {
-            archivo = new File ("Reto5/casa.txt");
+            archivo = new File ("Reto5/Reto5_Clase/casa.txt");
 			fr = new FileReader (archivo);
             br = new BufferedReader(fr);
             System.out.println("Leyendo el contendio del archivo.txt");
@@ -24,7 +24,7 @@ public class Edge{
                     String[] nodo=linea.split(" ",3);
                     nodos[con][0] =Integer.parseInt(nodo[0]);
                     nodos[con][1] =Integer.parseInt(nodo[1]);
-                    nodos[con][2] =Integer.parseInt(""+nodo[2].substring(2,5));
+                    nodos[con][2] =Integer.parseInt(nodo[2]);
                     con +=1;
                     if(con==a){
                         break;
@@ -48,7 +48,7 @@ public class Edge{
                 }
                 else{
                     a =Integer.parseInt(linea);
-                    aristas = new double[a][2];
+                    aristas = new int[a][2];
                 }
             }
         } catch (Exception e) {
