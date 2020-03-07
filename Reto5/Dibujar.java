@@ -12,10 +12,16 @@ import javax.swing.JFrame;
 public class Dibujar extends JPanel{
 
     static Edge punto;
+    static Edge punto2;
+    static Proyeccion mover;
+
 
     public Dibujar(){
         this.punto= new Edge();
         this.punto.leer_archivo();
+        punto2=punto;
+        mover= new Proyeccion(-500,punto);
+
     }
 
     public void dibujar(Graphics g2d, double[][] nodo, double[][] arista) {
@@ -38,8 +44,11 @@ public class Dibujar extends JPanel{
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
+        mover.movimiento();
         dibujar(g2d, punto.nodos, punto.aristas);
+        dibujar(g2d, punto2.nodos, punto2.aristas);
         repaint();
+        
     }
     public static void main(String[] args) {
         

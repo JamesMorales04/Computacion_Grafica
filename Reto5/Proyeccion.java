@@ -14,10 +14,9 @@ public class Proyeccion {
 
         for (int i = 0; i < puntos.nodos.length; i++) {
             Point4 nuevo_valor=nueva_posicion(this.puntos.nodos[i][0], this.puntos.nodos[i][1], this.puntos.nodos[i][2]);
-            
-            this.puntos.nodos[i][0]=nuevo_valor.punto_d[0];
-            this.puntos.nodos[i][1]=nuevo_valor.punto_d[1];
-            this.puntos.nodos[i][2]=nuevo_valor.punto_d[2];
+            this.puntos.nodos[i][0]=nuevo_valor.punto_d[0]/(nuevo_valor.punto_d[2]/d);
+            this.puntos.nodos[i][1]=nuevo_valor.punto_d[1]/(nuevo_valor.punto_d[2]/d);
+            this.puntos.nodos[i][2]=nuevo_valor.punto_d[2]/(nuevo_valor.punto_d[2]/d);
             
         }
 
@@ -38,20 +37,16 @@ public class Proyeccion {
                 }
                 if(i==3 && j==2){
                     matriz[i][j]=1/this.d;
+                    System.out.println(1/d);
                 }
             }
         }
 
-        for (int i = 0; i < matriz.length; i++) {
-            for (int j = 0; j < matriz[i].length; j++) {
-                System.out.print(matriz[i][j]+"  ");
-            }
-            System.out.println();
-        }
-        System.out.println("buenas");
 
         return matriz_translacion.times(matriz, punto);
     }
+
+
     
     public static void main(String[] args) {
         

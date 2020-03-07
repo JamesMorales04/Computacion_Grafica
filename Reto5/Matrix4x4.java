@@ -64,16 +64,16 @@ public class Matrix4x4 {
             for (int j = 0; j < matriz[i].length; j++) {
                 switch (i) {
                     case 0:
-                        x+=matriz[i][j]*punto.punto[j];
+                        x+=matriz[i][j]*punto.punto_d[j];
                         break;
                     case 1:
-                        y+=matriz[i][j]*punto.punto[j];
+                        y+=matriz[i][j]*punto.punto_d[j];
                         break;
                     case 2:
-                        z+=matriz[i][j]*punto.punto[j];
+                        z+=matriz[i][j]*punto.punto_d[j];
                         break;
                     case 3:
-                        w+=matriz[i][j]*punto.punto[j];
+                        w+=matriz[i][j]*punto.punto_d[j];
                         break;
 
                 }
