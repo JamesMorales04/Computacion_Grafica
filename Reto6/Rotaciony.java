@@ -30,7 +30,6 @@ public class Rotaciony {
             for (int j = 0; j < matriz[i].length; j++) {
                 matriz[i][j]=0;
 
-                
                 if(i==j){
                     matriz[i][j]=1.0;
                     if(i==1 || i==2){
@@ -39,10 +38,10 @@ public class Rotaciony {
 
                 }
                 if(i==2 && j==0){
-                    matriz[i][j]=-Math.sin(this.angulo);
+                    matriz[i][j]=Math.sin(this.angulo);
                 }
                 if(i==0 && j==2){
-                    matriz[i][j]=Math.sin(this.angulo);
+                    matriz[i][j]=-Math.sin(this.angulo);
                 }
             }
         }

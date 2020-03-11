@@ -1,7 +1,0 @@
-/**
- * CasaR
- */
-public class CasaR {
-
-    
-}
