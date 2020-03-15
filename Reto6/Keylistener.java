@@ -18,7 +18,7 @@ class Keylistener implements KeyListener
         this.rotary= rotary;
         this.rotarz= rotarz;
         this.ampliar= ampliar;
-        this.proyeccion=proyeccion;
+        this.proyeccion= proyeccion;
     }
 	public void keyTyped(KeyEvent e) 
 	{
@@ -61,11 +61,17 @@ class Keylistener implements KeyListener
         //Rotacion x
         if (c == 'u')
 		{
+            rotarx.dx=250;
+            rotarx.dy=250;
+            rotarx.dz=250;
 			rotarx.angulo=0.18;
             rotarx.movimiento();
         }
         if (c == 'j')
 		{
+            rotarx.dx=250;
+            rotarx.dy=250;
+            rotarx.dz=250;
 			rotarx.angulo=-0.18;
             rotarx.movimiento();
         }

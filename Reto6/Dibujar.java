@@ -22,13 +22,13 @@ public class Dibujar extends JPanel{
     public Dibujar(){
         this.punto= new Edge();
         this.punto.leer_archivo();
-        this.proyeccion= new Proyeccion(-500,punto);
+        this.proyeccion= new Proyeccion(-500,this.punto);
         this.proyeccion.movimiento();
         this.mover= new Translacion(0,0,0,this.punto);
         this.ampliar= new Escalado(0.9, 1.1,0, this.punto);
-        this.rotarx= new Rotacionx(0.0,punto);
-        this.rotary= new Rotaciony(0.0,punto);
-        this.rotarz= new Rotacionz(0.0,punto);
+        this.rotarx= new Rotacionx(0.0,0.0, 0.0, 0.0,this.punto);
+        this.rotary= new Rotaciony(0.0,this.punto);
+        this.rotarz= new Rotacionz(0.0,this.punto);
 
     }
 
@@ -41,10 +41,10 @@ public class Dibujar extends JPanel{
 
         for (int i = 0; i < con; i++) {
             
-            int x1 = (int)nodos[aristas[i][0]][0] ;
-            int y1 = 448 - (int)nodos[aristas[i][0]][1];
-            int x2 = (int)nodos[aristas[i][1]][0];
-            int y2 = 448 - (int)nodos[aristas[i][1]][1];
+            int x1 = 250 + (int)nodos[aristas[i][0]][0] ;
+            int y1 = 250 - (int)nodos[aristas[i][0]][1];
+            int x2 = 250 + (int)nodos[aristas[i][1]][0];
+            int y2 = 250 - (int)nodos[aristas[i][1]][1];
             g2d.drawLine(x1,y1,x2,y2);
         }
     }
