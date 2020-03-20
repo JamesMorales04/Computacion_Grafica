@@ -61,19 +61,23 @@ class Keylistener implements KeyListener
         //Rotacion x
         if (c == 'u')
 		{
-            rotarx.dx=250;
-            rotarx.dy=250;
-            rotarx.dz=250;
+            mover.movimiento_inverso_re();
 			rotarx.angulo=0.18;
             rotarx.movimiento();
+            mover.dx=250;
+            mover.dy=250;
+            mover.dz=250;
+            mover.movimiento_inverso();
         }
         if (c == 'j')
 		{
-            rotarx.dx=250;
-            rotarx.dy=250;
-            rotarx.dz=250;
+            mover.movimiento_inverso_re();
 			rotarx.angulo=-0.18;
             rotarx.movimiento();
+            mover.dx=250;
+            mover.dy=250;
+            mover.dz=250;
+            mover.movimiento_inverso();
         }
         
         //Rotar y

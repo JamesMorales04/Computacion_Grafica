@@ -5,30 +5,19 @@
 public class Rotacionx {
     Edge puntos;
     double angulo, dx, dy, dz;
-    Translacion mover;
 
     public Rotacionx(double angulo, double dx, double dy, double dz, Edge punto) {
         this.puntos = punto;
         this.angulo = angulo;
-        this.dx = dx;
-        this.dy = dy;
-        this.dz = dz;
     }
 
     public void movimiento() {
-        mover = new Translacion(this.dx, this.dx, this.dx, this.puntos);
-        System.out.println(puntos.nodos.length);
         for (int i = 0; i < puntos.nodos.length; i++) {
             Point4 nuevo_valor = nueva_posicion(this.puntos.nodos[i][0], this.puntos.nodos[i][1],this.puntos.nodos[i][2]);
             this.puntos.nodos[i][0] = nuevo_valor.punto_d[0];
             this.puntos.nodos[i][1] = nuevo_valor.punto_d[1];
             this.puntos.nodos[i][2] = nuevo_valor.punto_d[2];
-            // nuevo_valor = mover.nueva_posicion(this.puntos.nodos[i][0], this.puntos.nodos[i][1],this.puntos.nodos[i][2]);
-            // this.puntos.nodos[i][0] = nuevo_valor.punto_d[0];
-            // this.puntos.nodos[i][1] = nuevo_valor.punto_d[1];
-            // this.puntos.nodos[i][2] = nuevo_valor.punto_d[2];
         }
-
     }
 
     public Point4 nueva_posicion(double x, double y, double z) {
@@ -50,18 +39,6 @@ public class Rotacionx {
                 }
                 if (i == 1 && j == 2) {
                     matriz[i][j] = Math.sin(this.angulo);
-                }
-                if (j == 3 && i != 3) {
-                    if (i == 3) {
-                        matriz[i][j] =1;
-                    }
-                    if (i == 1) {
-                        matriz[i][j] = (this.dy*(Math.cos(this.angulo)))-(this.dy*(Math.sin(this.angulo)))-this.dy;
-                    }
-                    if (i == 2) {
-                        matriz[i][j] = (this.dy*(Math.sin(this.angulo)))+(this.dz*(Math.cos(this.angulo)))-this.dz;
-                    }
-
                 }
             }
         }
