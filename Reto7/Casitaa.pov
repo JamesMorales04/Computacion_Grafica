@@ -19,53 +19,38 @@ plane {
 }
 sphere {
     <0.1 , 0.5 ,-0.8>, 0.1
-    pigment { Yellow }
+    pigment { Red }
     finish {
-      ambient .1
-        diffuse .1
-        reflection .2
-        specular 1
-        roughness .001
-        irid {
-          0.35
-          thickness .5
-          turbulence .5
-        }
+      ambient 0.1
+      diffuse 1
+      phong 0.1
+      phong_size 10
      }
-     interior{
-        ior 1.5
-        fade_distance 5
-        fade_power 1
-        caustics 1
-    }
+
 }
 
 sphere {
     <-0.5 , 0.5 ,-0.5>, 0.1
     pigment { Green }
     finish {
-      ambient .1
-        diffuse .1
-        specular 1
-        roughness .001
-        reflection {
-           .1
+          ambient 1
+          diffuse 1
+          phong .8
+          phong_size 60
         }
-    }
+    
 }
 
  sphere {
     <0.5 , 0.8 ,-0.5>, 0.1
-    pigment { White }
+    pigment { Blue }
     finish {
-      ambient .1
-        diffuse .1
-        specular 1
-        roughness .001
-        reflection {
-           .1
+        ambient 0
+        diffuse 0.5
+        phong 1
+        phong_size 100
         }
-    }
+    
 }
 
 #declare Chessboard = 
